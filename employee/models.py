@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save,post_delete
 from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
+from django.core.validators import MinLengthValidator
 from datetime import datetime
 class Employee(models.Model):
     STATUS_CHOICES = (
@@ -16,7 +17,7 @@ class Employee(models.Model):
     status = models.CharField(max_length=100, choices=STATUS_CHOICES , default = 'Application Received')
     name = models.CharField(verbose_name='Name',max_length=100)
     email = models.EmailField(verbose_name='email')
-    mobile_number = PhoneNumberField()
+    mobile_number = PhoneNumberField(validators=[MinLengthValidator(11)])
     address = models.CharField(max_length=200)
     designation = models.CharField(verbose_name='Designation (Position/Title)',max_length=100)
     hired_on = models.DateField(null=True,blank=True)
