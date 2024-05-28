@@ -4,6 +4,7 @@ from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
 from django.core.validators import MinLengthValidator
 from datetime import datetime
+
 class Employee(models.Model):
     STATUS_CHOICES = (
         ('Application Received','Application Received'),

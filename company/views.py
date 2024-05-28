@@ -13,6 +13,7 @@ class CompanyCreateAPI(CreateAPIView):
     serializer_class = CompanyCreateUpdateDestroySerializer
     queryset = Company.objects.all()
     # permission_classes=[IsAuthenticated]
+    
 
 class CompanyRetrieveDestroyAPI(RetrieveDestroyAPIView):
     serializer_class = CompanyCreateUpdateDestroySerializer
