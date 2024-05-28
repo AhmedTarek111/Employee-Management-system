@@ -1,7 +1,8 @@
 from django.db import models
-from company.models import Company,Department
+from django.db.models.signals import post_save,post_delete
+from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
-
+from datetime import datetime
 class Employee(models.Model):
     STATUS_CHOICES = (
         ('Application Received','Application Received'),
@@ -10,8 +11,8 @@ class Employee(models.Model):
         ('Not Accepted','Not Accepted'),
          )
     
-    company = models.ForeignKey(Company,on_delete=models.CASCADE,related_name='company_employee')
-    department = models.ForeignKey(Department,on_delete=models.PROTECT,related_name='department_employee')
+    company = models.ForeignKey('company.Company',on_delete=models.CASCADE,related_name='company_employee')
+    department = models.ForeignKey('company.Department',on_delete=models.PROTECT,related_name='department_employee')
     status = models.CharField(max_length=100, choices=STATUS_CHOICES , default = 'Application Received')
     name = models.CharField(verbose_name='Name',max_length=100)
     email = models.EmailField(verbose_name='email')
@@ -23,4 +24,7 @@ class Employee(models.Model):
     
     def save(self, *args, **kwargs):
       self.mobile_number = self.mobile_number.as_international
+      if self.hired_on:
+            self.days_employed = (datetime.now().date() - self.hired_on).days
       super(Employee, self).save(*args, **kwargs) 
+      
