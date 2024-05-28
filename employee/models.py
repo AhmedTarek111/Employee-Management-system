@@ -20,7 +20,7 @@ class Employee(models.Model):
     address = models.CharField(max_length=200)
     designation = models.CharField(verbose_name='Designation (Position/Title)',max_length=100)
     hired_on = models.DateField(null=True,blank=True)
-    days_employed = models.DateField(verbose_name='Days Empolyed',null=True,blank=True)
+    days_employed = models.IntegerField(verbose_name='Days Empolyed',null=True,blank=True)
     
     def save(self, *args, **kwargs):
       self.mobile_number = self.mobile_number.as_international
@@ -28,3 +28,6 @@ class Employee(models.Model):
             self.days_employed = (datetime.now().date() - self.hired_on).days
       super(Employee, self).save(*args, **kwargs) 
       
+      
+    def __str__(self):
+      return self.name
