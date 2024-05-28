@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'accounts',
     # packages
     "phonenumber_field",
+    'rest_framework',
+    'rest_framework.authtoken'
+    
 ]
 
 MIDDLEWARE = [
@@ -131,3 +134,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 PHONENUMBER_DEFAULT_REGION = 'EG'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+REST_FRAMEWORK = {
+    
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
