@@ -11,6 +11,6 @@ urlpatterns = [
     path('department/list/',DepartmentListAPI.as_view()),
     path('department/create/',DepartmentCreateAPI.as_view()),
     path('department/retrieve-destroy/<int:pk>/',DepartmentRetrieveDestroyAPI.as_view),
-    path('department/update/<int:pk/',DepartmentUpdateAPI.as_view()),
+    path('department/update/<int:pk>/',DepartmentUpdateAPI.as_view()),
 
 ]

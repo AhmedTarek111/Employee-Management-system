@@ -14,10 +14,10 @@ class CompanyCreateUpdateDestroySerializer(serializers.ModelSerializer):
 
 class DepartmentListRetrieveSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Company
+        model = Department
         fields = '__all__'
         
 class DepartmentCreateUpdateDestroySerializer(serializers.ModelSerializer):
       class Meta:
-            model = Company
-            fields = ('name',)
+            model = Department
+            fields = ('company','name')
