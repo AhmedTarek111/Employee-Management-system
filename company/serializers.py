@@ -1,23 +1,23 @@
 from rest_framework import serializers
 from .models import Company, Department
 
-class CompanyListRetrieveSerializer(serializers.ModelSerializer):
+class CompanyListRetrieveDestroySerializer(serializers.ModelSerializer):
         class Meta:
             model = Company
             fields = '__all__'
 
-class CompanyCreateUpdateDestroySerializer(serializers.ModelSerializer):
+class CompanyCreateUpdateSerializer(serializers.ModelSerializer):
       class Meta:
             model = Company
             fields = ('name',)
 
 
-class DepartmentListRetrieveSerializer(serializers.ModelSerializer):
+class DepartmentListRetrieveDestroySerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
         fields = '__all__'
         
-class DepartmentCreateUpdateDestroySerializer(serializers.ModelSerializer):
+class DepartmentCreateUpdateSerializer(serializers.ModelSerializer):
       class Meta:
             model = Department
             fields = ('company','name')

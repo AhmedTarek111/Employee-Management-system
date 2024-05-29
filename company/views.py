@@ -1,46 +1,46 @@
 from rest_framework.generics import ListAPIView,CreateAPIView , RetrieveDestroyAPIView,UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
-from .serializers import CompanyCreateUpdateDestroySerializer,CompanyListRetrieveSerializer,DepartmentListRetrieveSerializer,DepartmentCreateUpdateDestroySerializer  
+from .serializers import CompanyCreateUpdateSerializer,CompanyListRetrieveDestroySerializer,DepartmentListRetrieveDestroySerializer,DepartmentCreateUpdateSerializer  
 from .models import Company,Department
 
 # company apis
 class CompanyListAPI(ListAPIView):
-    serializer_class = CompanyListRetrieveSerializer
+    serializer_class = CompanyListRetrieveDestroySerializer
     queryset = Company.objects.all()
     # permission_classes=[IsAuthenticated]
     
 class CompanyCreateAPI(CreateAPIView):
-    serializer_class = CompanyCreateUpdateDestroySerializer
+    serializer_class = CompanyCreateUpdateSerializer
     queryset = Company.objects.all()
     # permission_classes=[IsAuthenticated]
     
 
 class CompanyRetrieveDestroyAPI(RetrieveDestroyAPIView):
-    serializer_class = CompanyCreateUpdateDestroySerializer
+    serializer_class = CompanyListRetrieveDestroySerializer
     queryset = Company.objects.all()
     
 class CompanyUpdateAPI(UpdateAPIView):
-    serializer_class = CompanyCreateUpdateDestroySerializer
+    serializer_class = CompanyCreateUpdateSerializer
     queryset = Company.objects.all()
     # permission_classes=[IsAuthenticated]
     
 # department apis 
 class DepartmentListAPI(ListAPIView):
-    serializer_class = DepartmentListRetrieveSerializer
+    serializer_class = DepartmentListRetrieveDestroySerializer
     queryset = Department.objects.all()
     # permission_classes=[IsAuthenticated]
 
 class DepartmentCreateAPI(CreateAPIView):
-    serializer_class = DepartmentCreateUpdateDestroySerializer
+    serializer_class = DepartmentCreateUpdateSerializer
     queryset = Department.objects.all()
     # permission_classes=[IsAuthenticated]
    
 class DepartmentRetrieveDestroyAPI(RetrieveDestroyAPIView):
-    serializer_class = DepartmentCreateUpdateDestroySerializer
+    serializer_class = DepartmentCreateUpdateSerializer
     queryset = Department.objects.all()
     # permission_classes=[IsAuthenticated]
 
 class DepartmentUpdateAPI(UpdateAPIView):
-    serializer_class = DepartmentCreateUpdateDestroySerializer
+    serializer_class = DepartmentCreateUpdateSerializer
     queryset = Department.objects.all()
     # permission_classes=[IsAuthenticated]
