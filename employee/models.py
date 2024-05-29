@@ -25,6 +25,9 @@ class Employee(models.Model):
     days_employed = models.IntegerField(verbose_name='Days Empolyed',null=True,blank=True)
     
     def save(self, *args, **kwargs):
+      if self.department.company != self.company:
+          raise ValueError("Please choose a department related to this company")
+      
       self.mobile_number = self.mobile_number.as_international
       if self.hired_on:
             self.days_employed = (datetime.now().date() - self.hired_on).days
