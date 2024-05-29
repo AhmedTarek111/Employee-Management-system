@@ -1,11 +1,12 @@
-from rest_framework import generics, status
+from rest_framework import  status
 from rest_framework.response import Response
+from rest_framework.generics import CreateAPIView
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 
 from .serializer import UserSerializer
 
-class UserRegisteringApi(generics.CreateAPIView):
+class UserRegisteringApi(CreateAPIView):
     queryset = get_user_model().objects.all()  
     serializer_class = UserSerializer
 
@@ -31,6 +32,25 @@ class UserRegisteringApi(generics.CreateAPIView):
                 'Manager': 'Manager',
                 'Employee': 'Employee'  
             }
+            if role == 'Admin':
+                user = get_user_model().objects.get(username=validated_data['username'])
+                user.is_active =True
+                user.is_staff = True
+                user.is_superuser = True
+                user.save()
+          
+            elif role == 'Manager':
+                user = get_user_model().objects.get(username=validated_data['username'])
+                user.is_active =True
+                user.is_staff = True
+                user.save()
+          
+            elif role == 'Employee':
+                user = get_user_model().objects.get(username=validated_data['username'])
+                user.is_active =True
+                user.save()
+                
+          
 
             if role in group_names:
                 group = Group.objects.get(name=group_names[role])
