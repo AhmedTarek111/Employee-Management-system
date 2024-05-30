@@ -27,7 +27,7 @@ class CompanyRetrieveDestroyAPI(RetrieveDestroyAPIView):
 class CompanyUpdateAPI(UpdateAPIView):
     serializer_class = CompanyCreateUpdateSerializer
     queryset = Company.objects.all()
-    # permission_classes=[IsAuthenticated]
+    permission_classes=[AllowAny]
     
 # department apis 
 class DepartmentListAPI(ListAPIView):
@@ -41,9 +41,9 @@ class DepartmentCreateAPI(CreateAPIView):
     # permission_classes=[IsAuthenticated]
    
 class DepartmentRetrieveDestroyAPI(RetrieveDestroyAPIView):
-    serializer_class = DepartmentCreateUpdateSerializer
+    serializer_class = DepartmentListRetrieveDestroySerializer
     queryset = Department.objects.all()
-    # permission_classes=[IsAuthenticated]
+    permission_classes=[AllowAny]
 
 class DepartmentUpdateAPI(UpdateAPIView):
     serializer_class = DepartmentCreateUpdateSerializer

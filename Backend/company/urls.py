@@ -5,7 +5,7 @@ urlpatterns = [
     path('company/list/',CompanyListAPI.as_view()),
     path('company/create/',CompanyCreateAPI.as_view()),
     path('company/retrieve-destroy/<int:pk>/',CompanyRetrieveDestroyAPI.as_view()),
-    path('company/update/<int:pk>',CompanyUpdateAPI.as_view()),
+    path('company/update/<int:pk>/',CompanyUpdateAPI.as_view()),
 
     # department end points 
     path('department/list/',DepartmentListAPI.as_view()),

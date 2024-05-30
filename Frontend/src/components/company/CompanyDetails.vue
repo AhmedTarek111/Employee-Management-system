@@ -124,7 +124,7 @@ export default {
         method:'delete',
       }).then((response) => {
       if (response.status === 204) { 
-        this.$router.push('/company/list'); 
+        this.$router.push('/company/list/'); 
         alert('The company has been deleted');
       } else {
         console.error('Error:', response.status);

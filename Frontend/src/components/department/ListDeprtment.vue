@@ -16,7 +16,7 @@
             <th scope="row"><i class="dot fa-solid fa-circle"></i></th>
             <td>{{ department.name}}</td>
             <td >
-              <router-link :to="`/department/details/${department.id}/`" style="color: black;"><i class="fa-solid fa-circle-info"></i></router-link>
+              <router-link :to="`/department/detail/${department.id}/`" style="color: black;"><i class="fa-solid fa-circle-info"></i></router-link>
             </td>
             
           

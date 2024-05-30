@@ -3,7 +3,7 @@
   
   <div class="container">
         <h2 class="my-4">Our  Companies</h2> 
-      <table class="table table-success table-striped table-bordered">
+      <table class="table table-success table-striped table-bordered ">
         <thead>
           <tr class="text-center">
             <th scope="col"><i class="dot fa-solid fa-circle"></i></th>
