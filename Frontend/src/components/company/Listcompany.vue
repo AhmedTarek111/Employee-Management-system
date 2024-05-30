@@ -8,25 +8,20 @@
           <tr class="text-center">
             <th scope="col"><i class="dot fa-solid fa-circle"></i></th>
             <th scope="col">Name</th>
-            <th scope="col">Number of Department</th>
-            <th scope="col">Number of Employee</th>
+        
             <th  scope="col">details</th>
-            <th scope="col">Modifications</th>
           </tr>
         </thead>
         <tbody >
           <tr v-for="company in companies" class="text-center">
             <th scope="row"><i class="dot fa-solid fa-circle"></i></th>
             <td>{{ company.name }}</td>
-            <td>{{ company.number_of_departments }}</td>
-            <td>{{ company.number_of_employees }}</td>
+           
             <td >
-              <router-link  to="/company/details/" style="color: black;"><i class="fa-solid fa-circle-info "></i></router-link>
+              <router-link :to="`/company/detail/${company.id}/`" style="color: black;"><i class="fa-solid fa-circle-info"></i></router-link>
             </td>
-            <td>
-              <router-link to="/company/edit/"><i class="fa-regular fa-pen-to-square ms-3" ></i></router-link>
-              <a @click="deleteCompany(company.id)"><i class="fa-solid fa-trash ms-4" style="color: red;"></i></a>
-            </td>
+            
+          
           </tr>
          
         </tbody>

@@ -3,30 +3,22 @@
   
     <div class="container">
       <h2 class="my-5"> List Departments</h2>
-      <table class="table table-primary table-striped table-bordered">
+      <table class="table table-primary table-striped table-bordered text-center">
         <thead>
           <tr>
             <th scope="col"><i class="dot fa-solid fa-circle"></i></th>
-            <th scope="col">Company</th>
             <th scope="col">Name</th>
-            <th scope="col">Number Of Employee</th>
             <th  scope="col">details</th>
-            <th scope="col">Modifications</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="text-center">
           <tr v-for="department in departments">
             <th scope="row"><i class="dot fa-solid fa-circle"></i></th>
-            <td>{{ department.company}}</td>
             <td>{{ department.name}}</td>
-            <td>{{ department.number_of_employees}}</td>
             <td >
-              <router-link  to="/department/details/" style="color: black;"><i class="fa-solid fa-circle-info "></i></router-link>
+              <router-link :to="`/department/details/${department.id}/`" style="color: black;"><i class="fa-solid fa-circle-info"></i></router-link>
             </td>
-            <td>
-              <router-link to="/department/edit/"><i class="fa-regular fa-pen-to-square ms-3" ></i></router-link>
-              <a @click="deletedepartment(department.id)"><i class="fa-solid fa-trash ms-4" style="color: red;"></i></a>
-            </td>
+            
           
             
           </tr>

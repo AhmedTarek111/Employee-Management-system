@@ -3,49 +3,25 @@
     <div class="container">
       <h2 class="my-5"> List Employee</h2>
       <table class="table table-secondary  table-striped table-bordered">
-        <thead>
+        <thead class="text-center">
           <tr>
             <th scope="col"><i class="dot fa-solid fa-circle"></i></th>
-            <th scope="col">Company</th>
-            <th scope="col">Department</th>
-            <th scope="col">Status</th>
             <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Address</th>
-            <th scope="col">Designation</th>
-            <th scope="col">Hired On</th>
-            <th scope="col">Days Employed</th>
-            <th scope="col">details</th>
-            <th scope="col">Modifications</th>
+            <th scope="col">Details</th>
+           
 
 
           </tr>
         </thead>
-        <tbody>
+        <tbody class="text-center">
           <tr v-for="employee in employees">
             <th scope="row"><i class="dot fa-solid fa-circle"></i></th>
-            <td>{{ employee.company}}</td>
-            <td>{{ employee.department}}</td>
-            <td>{{ employee.status}}</td>
             <td>{{ employee.name}}</td>
-            <td>{{ employee.email}}</td>
-            <td>{{ employee.mobile_number}}</td>
-            <td>{{ employee.address}}</td>
-            <td>{{ employee.designation}}</td>
-            <td v-if="employee.status == 'Hired'">{{ employee.hired_on}}</td>
-            <td v-else> </td>
-            <td v-if="employee.status == 'Hired'">{{ employee.days_employed}}</td>
-            <td v-else> </td>
             <td>
-              <router-link  to="/employee/details/" style="color: black;"><i class="fa-solid fa-circle-info "></i></router-link>
-            </td>
-            <td>
-              <router-link to="/employee/edit/"><i class="fa-regular fa-pen-to-square ms-3" ></i></router-link>
-              <a @click="deleteemployee(department.id)"><i class="fa-solid fa-trash ms-4" style="color: red;"></i></a>
-            </td>
-          
-            
+              <router-link :to="`/employee/details/${employee.id}/`" style="color: black;">
+                <i class="fa-solid fa-circle-info"></i>
+              </router-link>
+            </td>     
           </tr>
          
         </tbody>
