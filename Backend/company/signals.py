@@ -3,12 +3,8 @@ from django.dispatch import receiver
 from .models import Department, Company
 from employee.models import Employee
 
-@receiver([post_save, post_delete], sender=Employee)
-def update_employee_count(sender, instance, **kwargs):
-    company = instance.company
-    if company:
-        company.number_of_employees = company.company_employee.count()
-        company.save()
+
+
 
 @receiver([post_save, post_delete], sender=Department)
 def update_all_departments_count(sender, instance, **kwargs):

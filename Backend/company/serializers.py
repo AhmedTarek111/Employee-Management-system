@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Company, Department
 
 class CompanyListRetrieveDestroySerializer(serializers.ModelSerializer):
+      
         class Meta:
             model = Company
             fields = '__all__'
@@ -13,6 +14,7 @@ class CompanyCreateUpdateSerializer(serializers.ModelSerializer):
 
 
 class DepartmentListRetrieveDestroySerializer(serializers.ModelSerializer):
+    company = serializers.StringRelatedField()
     class Meta:
         model = Department
         fields = '__all__'

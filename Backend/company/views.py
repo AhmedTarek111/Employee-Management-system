@@ -4,6 +4,8 @@ from .serializers import CompanyCreateUpdateSerializer,CompanyListRetrieveDestro
 from rest_framework.response import Response
 from django.http import JsonResponse
 from .models import Company,Department
+from rest_framework.permissions import AllowAny,IsAuthenticated
+
 from rest_framework.decorators import api_view
 # company apis
 class CompanyListAPI(ListAPIView):
@@ -20,6 +22,7 @@ class CompanyCreateAPI(CreateAPIView):
 class CompanyRetrieveDestroyAPI(RetrieveDestroyAPIView):
     serializer_class = CompanyListRetrieveDestroySerializer
     queryset = Company.objects.all()
+    permission_classes=[AllowAny]
     
 class CompanyUpdateAPI(UpdateAPIView):
     serializer_class = CompanyCreateUpdateSerializer
@@ -50,7 +53,7 @@ class DepartmentUpdateAPI(UpdateAPIView):
 class DepartmentRelatedToCompanyAPI(ListAPIView):
     serializer_class = DepartmentListRetrieveDestroySerializer
     # permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
-
+    
     def get_queryset(self):
         pk = self.kwargs.get('pk')
         return Department.objects.filter(company=pk)

@@ -14,5 +14,5 @@ urlpatterns = [
     path('department/update/<int:pk>/',DepartmentUpdateAPI.as_view()),
 
     # department related to the related compay 
-    path('departmentrelated/<int:pk>/',DepartmentRelatedToCompanyAPI.as_view()),
+    path('department-related/<int:pk>/',DepartmentRelatedToCompanyAPI.as_view()),
 ]

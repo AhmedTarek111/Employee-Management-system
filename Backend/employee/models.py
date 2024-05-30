@@ -13,10 +13,10 @@ class Employee(models.Model):
         ('Not Accepted','Not Accepted'),
          )
     
-    company = models.ForeignKey('company.Company',on_delete=models.CASCADE,related_name='company_employee')
-    department = models.ForeignKey('company.Department',on_delete=models.PROTECT,related_name='department_employee')
-    status = models.CharField(max_length=100, choices=STATUS_CHOICES , default = 'Application Received')
     name = models.CharField(verbose_name='Name',max_length=100)
+    company = models.ForeignKey('company.Company',on_delete=models.CASCADE,related_name='company_employee')
+    department = models.ForeignKey('company.Department',on_delete=models.CASCADE,related_name='department_employee')
+    status = models.CharField(max_length=100, choices=STATUS_CHOICES , default = 'Application Received')
     email = models.EmailField(verbose_name='email')
     mobile_number = PhoneNumberField(validators=[MinLengthValidator(11)])
     address = models.CharField(max_length=200)
