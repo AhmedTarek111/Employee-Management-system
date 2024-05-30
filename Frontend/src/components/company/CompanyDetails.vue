@@ -2,6 +2,14 @@
   <div>
     <div class="container">
       <h2>{{ companydetail.name }} Company </h2>
+      <div class="d-flex flex-row-reverse">
+        
+          <router-link :to="{ path: '/company/update/' + this.Companyid +'/'}">
+            <a href=""><i class="fa-regular fa-pen-to-square ms-3" ></i></a>
+          </router-link>
+          <a @click="deleteCompany()"><i class="fa-solid fa-trash ms-4" style="color: red;"></i></a>
+        
+      </div>
 
       <div class="container mt-5">
         <h2 class="mb-4">Company Details</h2>
@@ -110,6 +118,24 @@ export default {
         this.relatedEmployees = response.data;
       });
     },
+    deleteCompany(){
+      axios({
+        url:`http://127.0.0.1:8000/company/retrieve-destroy/${this.Companyid}/`,
+        method:'delete',
+      }).then((response) => {
+      if (response.status === 204) { 
+        this.$router.push('/company/list'); 
+        alert('The company has been deleted');
+      } else {
+        console.error('Error:', response.status);
+        alert('Deletion failed. Please check the console for details.');
+      }
+    })
+      .then(alert('The company has been deleted'))
+      .catch(error => {
+    console.error(error);
+  });
+    }
   },
   mounted() {
     this.getCompanyDetails();
