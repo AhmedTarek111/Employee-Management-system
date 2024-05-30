@@ -34,9 +34,9 @@
             <td>{{ employee.address}}</td>
             <td>{{ employee.designation}}</td>
             <td v-if="employee.status == 'Hired'">{{ employee.hired_on}}</td>
-            <td v-else>Not Hired </td>
+            <td v-else> </td>
             <td v-if="employee.status == 'Hired'">{{ employee.days_employed}}</td>
-            <td v-else>Not Hired </td>
+            <td v-else> </td>
             <td>
               <router-link  to="/employee/details/" style="color: black;"><i class="fa-solid fa-circle-info "></i></router-link>
             </td>
