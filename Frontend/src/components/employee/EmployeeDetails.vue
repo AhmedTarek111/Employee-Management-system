@@ -2,7 +2,7 @@
     <div class="container">
       <h2>Employee Details</h2>
       <table class="table table-striped mt-5">
-        <thead>
+        <thead class="text-center">
           <tr>
             <th>Name</th>
             <th>Company</th>
@@ -17,7 +17,7 @@
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody class="mt-4">
+        <tbody class="mt-4 text-center">
           <tr >
             <td>{{ employee.name }}</td>
             <td>{{ employee.company }}</td>

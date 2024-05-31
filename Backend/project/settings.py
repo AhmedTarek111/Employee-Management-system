@@ -155,5 +155,5 @@ AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailBackend',  
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True 
 CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True

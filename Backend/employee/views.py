@@ -16,6 +16,7 @@ class EmployeeListAPI(ListAPIView):
 class EmployeeCreateAPI(CreateAPIView):
     serializer_class = EmployeeCreateUpdateSerializer
     queryset = Employee.objects.all()
+    permission_classes = [AllowAny]
     
     
 class EmployeeUpdateAPI(UpdateAPIView):
