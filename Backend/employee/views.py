@@ -6,7 +6,6 @@ from rest_framework import status
 from .serializers import EmployeeListRetrieveDestroySerializer,EmployeeCreateUpdateSerializer
 from .models import Employee 
 from company.models import Company
-
 from rest_framework.permissions import AllowAny,IsAuthenticated
 
 class EmployeeListAPI(ListAPIView):
@@ -26,6 +25,7 @@ class EmployeeUpdateAPI(UpdateAPIView):
 class EmployeeRetrieveDestroyAPI(RetrieveDestroyAPIView):
     serializer_class  = EmployeeListRetrieveDestroySerializer
     queryset = Employee.objects.all()
+    permission_classes=[AllowAny]
     
     
 # to list employees related to spcific company
