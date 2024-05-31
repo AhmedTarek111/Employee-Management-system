@@ -6,7 +6,7 @@ import Listemployee from '../components/employee/ListEmployee.vue'
 import CompanyDetails from '../components/company/CompanyDetails.vue'
 import CompanyUpdate from '../components/company/CompanyUpdate.vue'
 import DepartemntDetail from '../components/department/DepartmentDetails.vue'
-
+import DepartemntUpdate from '../components/department/DepartmentUpdate.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -37,6 +37,12 @@ const router = createRouter({
       path: '/department/detail/:id/',
       name: 'DepartemntDetail',
       component: DepartemntDetail
+    },
+    
+    {
+      path: '/department/update/:id/',
+      name: 'DepartemntUpdate',
+      component: DepartemntUpdate
     },
     
     // Employee

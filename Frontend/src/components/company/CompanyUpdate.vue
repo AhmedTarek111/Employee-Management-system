@@ -1,7 +1,7 @@
 <template>
     <div>
       <div class="container">
-        <h2>Update {{ name }} company</h2>
+        <h2>Update  Company</h2>
         <form @submit.prevent="companyUpdate">
           <div class="form-group">
             <label for="name">Company Name</label>
