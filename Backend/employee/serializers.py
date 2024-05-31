@@ -10,7 +10,13 @@ class EmployeeListRetrieveDestroySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class EmployeeCreateUpdateSerializer(serializers.ModelSerializer):
+class EmployeeCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
         fields =('company','department','name','email','mobile_number','address','designation')
+        
+class EmployeeUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Employee
+        fields =('company','department','name','email','mobile_number','address','designation','status')
+        

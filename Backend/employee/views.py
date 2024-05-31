@@ -3,7 +3,7 @@ from rest_framework.generics import  ListAPIView ,CreateAPIView,RetrieveDestroyA
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import EmployeeListRetrieveDestroySerializer,EmployeeCreateUpdateSerializer
+from .serializers import EmployeeListRetrieveDestroySerializer,EmployeeCreateSerializer,EmployeeUpdateSerializer
 from .models import Employee 
 from company.models import Company
 from rest_framework.permissions import AllowAny,IsAuthenticated
@@ -14,14 +14,15 @@ class EmployeeListAPI(ListAPIView):
     
     
 class EmployeeCreateAPI(CreateAPIView):
-    serializer_class = EmployeeCreateUpdateSerializer
+    serializer_class = EmployeeCreateSerializer
     queryset = Employee.objects.all()
     permission_classes = [AllowAny]
     
     
 class EmployeeUpdateAPI(UpdateAPIView):
-    serializer_class = EmployeeCreateUpdateSerializer
+    serializer_class = EmployeeUpdateSerializer
     queryset = Employee.objects.all()
+    permission_classes=[AllowAny]
     
 class EmployeeRetrieveDestroyAPI(RetrieveDestroyAPIView):
     serializer_class  = EmployeeListRetrieveDestroySerializer

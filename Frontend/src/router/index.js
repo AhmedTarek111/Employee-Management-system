@@ -9,7 +9,7 @@ import DepartemntDetail from '../components/department/DepartmentDetails.vue'
 import DepartemntUpdate from '../components/department/DepartmentUpdate.vue'
 import EmployeeDetail from '../components/employee/EmployeeDetails.vue'
 import EmployeeCreation from '../components/employee/EmployeeCreation.vue'
-
+import EmployeeUpdate from '../components/employee/EmployeeUpdate.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -70,6 +70,11 @@ const router = createRouter({
       path: '/employee/create/',
       name: 'EmployeeCreate',
       component: EmployeeCreation
+    },
+    {
+      path: '/employee/update/:id/',
+      name: 'EmployeeUpdate',
+      component: EmployeeUpdate
     },
     
     
