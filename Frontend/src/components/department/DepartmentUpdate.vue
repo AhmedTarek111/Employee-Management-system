@@ -7,6 +7,14 @@
           <label for="name">Department Name</label>
           <input type="text" class="form-control" id="name" required v-model="Department.name">
         </div>
+
+        <div class="form-group">
+          <label for="company">Department:</label>
+          <select id="company" v-model="Department.company" @click="listCompany()" required class="form-control">
+            <option value="">Select Company</option>
+            <option v-for="company in companies" :key="company.id" :value="company.id">{{ company.name }}</option>
+          </select>
+        </div>
        
         <button type="submit" class="btn btn-primary">Update Department</button>
       </form>
@@ -21,7 +29,7 @@ export default {
   name: 'DepartmentUpdate',
   data() {
     return {
-      companyID:'',
+      companies:'',
       Department: {
         name: '',
         company: ''
@@ -56,11 +64,17 @@ export default {
         console.error('There was an error updating the department:', error.response.data);
       });
     },
+    listCompany(){
+            axios({
+                url:'http://127.0.0.1:8000/company/list/',
+                method:'get',
+            }).then(response => this.companies = response.data);
     
   },
  
   mounted() {
     this.getDepartmentDetails();
   }
-};
+  }
+}
 </script>
