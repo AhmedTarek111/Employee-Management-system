@@ -1,10 +1,11 @@
 <template>
-    <div class="text-center ">
-        <h1>this is home page </h1>
+    <div class="container" >
+
     </div>
 </template>
 
 <script>
+
 export default {
     name:'HomePage',
 }

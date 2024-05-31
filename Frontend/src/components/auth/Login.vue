@@ -11,6 +11,9 @@
           <label for="password">Password:</label>
           <input type="password" id="password" v-model="password" required class="form-control">
         </div>
+        <p class="d-flex justify-content-center">
+          <router-link to="/signup/" class="link-offset-2 link-underline link-underline-opacity-25" href="#">Sign up</router-link>
+        </p>
         <button type="submit" class="btn btn-primary">Login</button>
       </form>
     </div>
@@ -36,7 +39,7 @@
         };
         this.loginUser(credentials)
           .then(() => {
-            this.$router.push('/employee/list/');
+            this.$router.push('/');
           })
           .catch(error => {
             console.error('Error logging in:', error);

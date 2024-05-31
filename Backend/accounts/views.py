@@ -3,12 +3,13 @@ from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
-
+from rest_framework.permissions import AllowAny
 from .serializer import UserSerializer
 
 class UserRegisteringApi(CreateAPIView):
     queryset = get_user_model().objects.all()  
     serializer_class = UserSerializer
+    permission_classes=[AllowAny]
 
     def post(self, request, *args, **kwargs):
         serializer = UserSerializer(data=request.data)

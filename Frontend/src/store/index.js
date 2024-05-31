@@ -1,9 +1,9 @@
-// src/store/index.js
 import { createStore } from 'vuex'
 import axios from 'axios'
 
 export default createStore({
   state: {
+    pew:'ahmed tarek',
     token: localStorage.getItem('token') || '',
     user: null
   },
@@ -26,17 +26,29 @@ export default createStore({
     loginUser({ commit }, user) {
       return new Promise((resolve, reject) => {
         axios({ url: 'http://127.0.0.1:8000/api/token/', data: user, method: 'POST' })
-          .then(resp => {
-            const token = resp.data.access
+          .then(response => {
+            const token = response.data.access
             localStorage.setItem('token', token)
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
             commit('auth_success', token)
-            commit('set_user', resp.data.user)
-            resolve(resp)
+            commit('set_user', response.data.user)
+            resolve(response)
           })
           .catch(err => {
             commit('auth_error')
             localStorage.removeItem('token')
+            reject(err)
+          })
+      })
+    },
+    registerUser({ commit }, user) {
+      return new Promise((resolve, reject) => {
+        axios({ url: 'http://127.0.0.1:8000/accounts/signup/', data: user, method: 'POST' })
+          .then(response => {
+            console.log(response.data)
+            resolve(response)
+          })
+          .catch(err => {
             reject(err)
           })
       })

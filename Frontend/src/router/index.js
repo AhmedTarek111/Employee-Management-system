@@ -14,6 +14,7 @@ import EmployeeUpdate from '../components/employee/EmployeeUpdate.vue'
 import store from '../store'
 import HomePage from '../components/Home.vue'
 import Login from '../components/auth/Login.vue'
+import Signup from '../components/auth/Signup .vue'
 
 const routes = [
   // company
@@ -91,7 +92,13 @@ const routes = [
     path: '/login/',
     name: 'login',
     component: Login,
-  }
+  },
+  // sign up 
+  {
+    path:'/signup/',
+    name:'Signup ',
+    component:Signup
+  },
 ];
 
 const router = createRouter({
