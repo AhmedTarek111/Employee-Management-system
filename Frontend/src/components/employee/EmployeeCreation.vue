@@ -87,26 +87,25 @@
         }
       },
       createEmployee() {
-        axios ({
-          url:'http://127.0.0.1:8000/employee/create/',
-          method:'post',
-          data:this.newEmployee
-        })
-          .then(() => {
-            this.newEmployee = {
-              name: '',
-              company: '',
-              department: '',
-              email: '',
-              mobile_number: '',
-              address: '',
-              designation: '',
-            };
+          axios({
+            url: 'http://127.0.0.1:8000/employee/create/',
+            method: 'post',
+            data: this.newEmployee
+          })
+          .then(response => {
+            if (response.status === 201) {
+              alert('The employee has been created');
+              this.$router.push('/employee/list/');
+            } else {
+              console.error('Error:', response.status);
+              alert('Creation failed. Please check the console for details.');
+            }
           })
           .catch(error => {
-            console.error('Error creating employee:', error);
+            console.error('faield creating employee:', error);
           });
-      },
+    },
+
     },
     mounted() {
       this.listCompany();

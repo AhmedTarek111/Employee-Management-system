@@ -1,7 +1,7 @@
 <template>
     <div class="mb-5">
         <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
-          <div class="container-md d-flex justify-content-center">  <a class="navbar-brand" href="#">Employee Management System </a>
+          <div class="container-md d-flex justify-content-center">  <router-link class="navbar-brand" to="/">Employee Management System </router-link>
           </div>
         </nav>
       </div>

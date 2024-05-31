@@ -1,6 +1,9 @@
 <template>
     <div class="container">
-      <h2>Employee Details</h2>
+      <div class="d-flex d-flex justify-content-between align-items-center mb-3">
+        <h2>Employee Details</h2>
+        
+      </div>
       <table class="table table-striped mt-5">
         <thead class="text-center">
           <tr>
@@ -30,7 +33,7 @@
             <td>{{ employee.hired_on }}</td>
             <td>{{ employee.days_employed }}</td>
             <td>
-                <router-link :to="{ path: '/department/update/' + this.Departmentid +'/'}">
+                <router-link :to="{ path: '/employee/update/' + this.employeeId +'/'}">
                     <a href=""><i class="fa-regular fa-pen-to-square ms-3" ></i></a>
                   </router-link>
                   <a @click="deleteEmployee()"><i class="fa-solid fa-trash ms-4" style="color: red;"></i></a>

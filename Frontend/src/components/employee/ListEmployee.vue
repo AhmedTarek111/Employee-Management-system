@@ -1,6 +1,9 @@
 <template>
     <div class="container">
-      <h2 class="my-5"> List Employee</h2>
+      <div class="d-flex d-flex justify-content-between align-items-center mb-3">
+        <h2 class="my-5"> List Employee</h2>
+        <router-link to="/employee/create/" type="button" class="btn btn-success p-2 ">Add Employee</router-link>
+      </div>
       <table class="table table-secondary  table-striped table-bordered">
         <thead class="text-center">
           <tr>

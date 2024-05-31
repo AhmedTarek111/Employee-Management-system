@@ -8,6 +8,7 @@
         </div>
         <div class="form-group">
           <label for="company">Company:</label>
+          <div v-if="!newUpdatedData.company"></div>
           <select id="company" v-model="newUpdatedData.company" class="form-control">
             <option value="">Select Company</option>
             <option v-for="company in companies" :key="company.id" :value="company.id">{{ company.name }}</option>

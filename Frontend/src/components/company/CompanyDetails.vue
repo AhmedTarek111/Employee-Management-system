@@ -1,14 +1,16 @@
 <template>
   <div>
     <div class="container">
-      <h2>{{ companydetail.name }} Company </h2>
-      <div class="d-flex flex-row-reverse">
-        
+      <div class="d-flex d-flex justify-content-between align-items-center mb-3">
+        <h2>{{ companydetail.name }} Company </h2>
+        <div>
+          
           <router-link :to="{ path: '/company/update/' + this.Companyid +'/'}">
-            <a href=""><i class="fa-regular fa-pen-to-square ms-3" ></i></a>
+            <a class="btn btn-secondary me-2">Edit<i class="fa-regular fa-pen-to-square ms-3" ></i></a>
           </router-link>
-          <a @click="deleteCompany()"><i class="fa-solid fa-trash ms-4" style="color: red;"></i></a>
+          <a @click="deleteCompany()" class="btn btn-warning">delete<i class="fa-solid fa-trash ms-2" style="color: red;"></i></a>
         
+        </div>
       </div>
 
       <div class="container mt-5">
