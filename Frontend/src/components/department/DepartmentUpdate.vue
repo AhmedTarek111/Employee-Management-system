@@ -5,12 +5,12 @@
       <form @submit.prevent="departmentUpdate">
         <div class="form-group">
           <label for="name">Department Name</label>
-          <input type="text" class="form-control" id="name" required v-model="Department.name">
+          <input type="text" class="form-control" id="name" v-model="Department.name">
         </div>
 
         <div class="form-group">
           <label for="company">Department:</label>
-          <select id="company" v-model="Department.company" @click="listCompany()" required class="form-control">
+          <select id="company" v-model="Department.company" class="form-control" required>
             <option value="">Select Company</option>
             <option v-for="company in companies" :key="company.id" :value="company.id">{{ company.name }}</option>
           </select>
@@ -29,19 +29,18 @@ export default {
   name: 'DepartmentUpdate',
   data() {
     return {
-      companies:'',
+      companies: [], 
       Department: {
         name: '',
         company: ''
       },
-      Departmentid: this.$route.params.id,
-      
+      Departmentid: this.$route.params.id
     };
   },
   methods: {
     getDepartmentDetails() {
       axios({
-        url: `http://127.0.0.1:8000/department/update/${this.Departmentid}/`,
+        url: `http://127.0.0.1:8000/department/retrieve-destroy/${this.Departmentid}/`,
         method: 'get'
       }).then(response => {
         this.Department = response.data;
@@ -64,17 +63,20 @@ export default {
         console.error('There was an error updating the department:', error.response.data);
       });
     },
-    listCompany(){
-            axios({
-                url:'http://127.0.0.1:8000/company/list/',
-                method:'get',
-            }).then(response => this.companies = response.data);
-    
+    listCompany() {
+      axios({
+        url: 'http://127.0.0.1:8000/company/list/',
+        method: 'get'
+      }).then(response => {
+        this.companies = response.data;
+      }).catch(error => {
+        console.error('There was an error fetching the companies:', error);
+      });
+    }
   },
- 
   mounted() {
     this.getDepartmentDetails();
-  }
+    this.listCompany();
   }
 }
 </script>
