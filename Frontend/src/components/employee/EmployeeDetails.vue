@@ -32,11 +32,11 @@
             <td>{{ employee.designation }}</td>
             <td>{{ employee.hired_on }}</td>
             <td>{{ employee.days_employed }}</td>
-            <td>
+            <td class="d-flex">
                 <router-link :to="{ path: '/employee/update/' + this.employeeId +'/'}">
-                    <a href=""><i class="fa-regular fa-pen-to-square ms-3" ></i></a>
+                    <a href=""><i class="fa-regular fa-pen-to-square me-3" ></i></a>
                   </router-link>
-                  <a @click="deleteEmployee()"><i class="fa-solid fa-trash ms-4" style="color: red;"></i></a>
+                  <a @click="deleteEmployee()"><i class="fa-solid fa-trash " style="color: red;"></i></a>
               </td>
           </tr>
         </tbody>

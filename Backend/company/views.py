@@ -13,39 +13,39 @@ from rest_framework.decorators import api_view
 class CompanyListAPI(ListAPIView):
     serializer_class = CompanyListRetrieveDestroySerializer
     queryset = Company.objects.all()
-    # permission_classes=[IsAuthenticated]
+    permission_classes=[IsAuthenticated]
     
 class CompanyCreateAPI(CreateAPIView):
     serializer_class = CompanyCreateUpdateSerializer
     queryset = Company.objects.all()
-    # permission_classes=[IsAuthenticated]
+    permission_classes=[IsAuthenticated]
     
 
 class CompanyRetrieveDestroyAPI(RetrieveDestroyAPIView):
     serializer_class = CompanyListRetrieveDestroySerializer
     queryset = Company.objects.all()
-    permission_classes=[AllowAny]
+    permission_classes=[IsAuthenticated]
     
 class CompanyUpdateAPI(UpdateAPIView):
     serializer_class = CompanyCreateUpdateSerializer
     queryset = Company.objects.all()
-    permission_classes=[AllowAny]
+    permission_classes=[IsAuthenticated]
     
 # department apis 
 class DepartmentListAPI(ListAPIView):
     serializer_class = DepartmentListRetrieveDestroySerializer
     queryset = Department.objects.all()
-    # permission_classes=[IsAuthenticated]
+    permission_classes=[IsAuthenticated]
 
 class DepartmentCreateAPI(CreateAPIView):
     serializer_class = DepartmentCreateUpdateSerializer
     queryset = Department.objects.all()
-    # permission_classes=[IsAuthenticated]
+    permission_classes=[IsAuthenticated]
    
 class DepartmentRetrieveDestroyAPI(RetrieveDestroyAPIView):
     serializer_class = DepartmentListRetrieveDestroySerializer
     queryset = Department.objects.all()
-    permission_classes=[AllowAny]
+    permission_classes=[IsAuthenticated]
 
 
 class DepartmentUpdateAPI(RetrieveUpdateAPIView):
@@ -53,10 +53,10 @@ class DepartmentUpdateAPI(RetrieveUpdateAPIView):
     permission_classes = [AllowAny]
     queryset = Department.objects.all()
 
-    # permission_classes=[IsAuthenticated]
+    permission_classes=[IsAuthenticated]
 class DepartmentRelatedToCompanyAPI(ListAPIView):
     serializer_class = DepartmentListRetrieveDestroySerializer
-    # permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    permission_classes = [IsAuthenticated]
     
     def get_queryset(self):
         pk = self.kwargs.get('pk')

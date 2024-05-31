@@ -11,23 +11,24 @@ from rest_framework.permissions import AllowAny,IsAuthenticated
 class EmployeeListAPI(ListAPIView):
     serializer_class = EmployeeListRetrieveDestroySerializer
     queryset = Employee.objects.all()
+    permission_classes=[IsAuthenticated]
     
     
 class EmployeeCreateAPI(CreateAPIView):
     serializer_class = EmployeeCreateSerializer
     queryset = Employee.objects.all()
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     
     
 class EmployeeUpdateAPI(UpdateAPIView):
     serializer_class = EmployeeUpdateSerializer
     queryset = Employee.objects.all()
-    permission_classes=[AllowAny]
+    permission_classes=[IsAuthenticated]
     
 class EmployeeRetrieveDestroyAPI(RetrieveDestroyAPIView):
     serializer_class  = EmployeeListRetrieveDestroySerializer
     queryset = Employee.objects.all()
-    permission_classes=[AllowAny]
+    permission_classes=[IsAuthenticated]
     
     
 # to list employees related to spcific company
