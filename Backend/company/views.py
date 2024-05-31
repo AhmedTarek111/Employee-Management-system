@@ -1,8 +1,10 @@
-from rest_framework.generics import ListAPIView,CreateAPIView , RetrieveDestroyAPIView,UpdateAPIView
+from rest_framework.generics import ListAPIView,CreateAPIView , RetrieveDestroyAPIView,UpdateAPIView,RetrieveUpdateAPIView
+from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
-from .serializers import CompanyCreateUpdateSerializer,CompanyListRetrieveDestroySerializer,DepartmentListRetrieveDestroySerializer,DepartmentCreateUpdateSerializer  
+from .serializers import CompanyCreateUpdateSerializer,CompanyListRetrieveDestroySerializer,DepartmentListRetrieveDestroySerializer,DepartmentCreateUpdateSerializer 
 from rest_framework.response import Response
 from django.http import JsonResponse
+from rest_framework import status
 from .models import Company,Department
 from rest_framework.permissions import AllowAny,IsAuthenticated
 
@@ -45,10 +47,12 @@ class DepartmentRetrieveDestroyAPI(RetrieveDestroyAPIView):
     queryset = Department.objects.all()
     permission_classes=[AllowAny]
 
-class DepartmentUpdateAPI(UpdateAPIView):
+
+class DepartmentUpdateAPI(RetrieveUpdateAPIView):
     serializer_class = DepartmentCreateUpdateSerializer
+    permission_classes = [AllowAny]
     queryset = Department.objects.all()
-    
+
     # permission_classes=[IsAuthenticated]
 class DepartmentRelatedToCompanyAPI(ListAPIView):
     serializer_class = DepartmentListRetrieveDestroySerializer

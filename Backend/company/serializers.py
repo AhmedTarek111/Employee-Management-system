@@ -22,4 +22,6 @@ class DepartmentListRetrieveDestroySerializer(serializers.ModelSerializer):
 class DepartmentCreateUpdateSerializer(serializers.ModelSerializer):
       class Meta:
             model = Department
-            fields = ('company','name')
+            fields = ('company','name', )
+            
+      
