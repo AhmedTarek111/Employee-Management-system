@@ -2,8 +2,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <div class="container">
-        <h2 class="my-4">Our  Companies</h2> 
-      <table class="table table-success table-striped table-bordered ">
+    <div class="d-flex d-flex justify-content-between align-items-center mb-3">
+      <h2 class="my-5"> List Company</h2>
+      <router-link to="/company/create/" type="button" class="btn btn-success p-2 ">Add Company</router-link>
+    </div>
+    <table class="table table-success table-striped table-bordered ">
         <thead>
           <tr class="text-center">
             <th scope="col"><i class="dot fa-solid fa-circle"></i></th>
