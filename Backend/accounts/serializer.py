@@ -6,7 +6,12 @@ ROLE_CHOICES = (
         ('Employee', 'Employee'),
     )
 
-class UserSerializer(serializers.ModelSerializer):
+class UserCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields= ('username','email','password','role')
+        
+class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields= ('username','email','password','role','id')
