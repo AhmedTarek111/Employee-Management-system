@@ -31,10 +31,10 @@ export default {
                     name: this.companyName
                 }
             }).then(response => {
-                alert('Company Created successfully!');
+                alert('Company Created successfully');
                 this.$router.push('/company/list/');
             }).catch(error => {
-                console.error('There was an error creating the company!', error);
+                console.error('There was an error creating the company', error);
             });
         }
     },

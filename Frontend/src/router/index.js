@@ -1,4 +1,3 @@
-// router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Listcompany from '../components/company/ListCompany.vue'
@@ -16,6 +15,7 @@ import HomePage from '../components/Home.vue'
 import Login from '../components/auth/Login.vue'
 import Signup from '../components/auth/Signup .vue'
 import CreateCompany from '../components/company/CompanyCreation.vue'
+import CreateDepartment from '../components/department/DepartmentCreation.vue'
 
 const routes = [
   // company
@@ -60,6 +60,12 @@ const routes = [
     path: '/department/update/:id/',
     name: 'DepartemntUpdate',
     component: DepartemntUpdate,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/department/create/',
+    name: 'CreateDepartment',
+    component: CreateDepartment,
     meta: { requiresAuth: true }
   },
   // employee
