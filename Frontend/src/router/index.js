@@ -15,6 +15,7 @@ import store from '../store'
 import HomePage from '../components/Home.vue'
 import Login from '../components/auth/Login.vue'
 import Signup from '../components/auth/Signup .vue'
+import CreateCompany from '../components/company/CompanyCreation.vue'
 
 const routes = [
   // company
@@ -22,6 +23,12 @@ const routes = [
     path: '/company/list/',
     name: 'ListCompany',
     component: Listcompany,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/company/create/',
+    name: 'CreateCompany',
+    component: CreateCompany,
     meta: { requiresAuth: true }
   },
   {
