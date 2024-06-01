@@ -1,166 +1,83 @@
-## .gitignore
+# Python
+*.py[cod]
+*.pyo
+*.pyc
+__pycache__/
+*.so
 
-Lib/
-Scripts/
-pyvenv.cfg
-src/    # Django #
+# Virtual Environment
+venv/
+.env
+env/
+ENV/
+.venv/
+.vscode/
 
-# Log, translation, temporary Python files and directories
+# Django
 *.log
 *.pot
-*.pyc
-__pycache__
+*.py[cod]
+*.env
+*.venv
+*.pyvenv.cfg
+*.Scripts
+*.Lib
 
-# Database and media files
-db.sqlite3
-media
+Scripts
+pyvenv.cfg
+Lib
+media/
+staticfiles/
+local_settings.py
 
-# Backup files 
-*.bak
-
-# PyCharm IDE files
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
-
-# AWS User-specific PyCharm files
-.idea/**/aws.xml
-
-# Generated PyCharm files
-.idea/**/contentModel.xml
-
-# Sensitive or high-churn PyCharm files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
-
-# Gradle in PyCharm
-.idea/**/gradle.xml
-.idea/**/libraries
-
-# File-based project format
-*.iws
-
-# IntelliJ IDE files
-out/
-
-# JIRA plugin
-atlassian-ide-plugin.xml
-
-# Python files
-*.py[cod] 
-*$py.class 
-
-# Distribution / packaging 
-.Python
-build/
-develop-eggs/
+# Vue.js
+node_modules/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.whl
-*.egg-info/
-.installed.cfg
-*.egg
-*.manifest
-*.spec 
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vuepress/dist
 
-# Installer logs 
-pip-log.txt
-pip-delete-this-directory.txt 
+# MacOS
+.DS_Store
 
-# Unit test / coverage reports 
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-.pytest_cache/
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/ 
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
 
-# Jupyter Notebook 
-.ipynb_checkpoints 
+# Linux
+*~
+.nfs*
 
-# pyenv 
-.python-version 
-
-# celery 
-celerybeat-schedule.* 
-
-# SageMath parsed files 
-*.sage.py 
-
-# Environments 
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# mkdocs documentation 
-/site 
-
-# mypy 
-.mypy_cache/ 
-
-# Sublime Text files
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
+# IDEs and Editors
+.idea/
 *.sublime-workspace
 *.sublime-project
+*.code-workspace
 
-# sftp configuration file
-sftp-config.json
-
-# Package control specific files
-PackageControl.last-run
-PackageControl.ca-list
-PackageControl.ca-bundle
-PackageControl.system-ca-bundle
-GitHub.sublime-settings
-
-# Visual Studio Code files (excluding settings, tasks, launch, and extensions)
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# Shell history
-.history
-.DS_Store
-node_modules
+# Logs
+logs/
 *.log
-explorations
-TODOs.md
-RELEASE_NOTE*.md
-packages/server-renderer/basic.js
-packages/server-renderer/build.dev.js
-packages/server-renderer/build.prod.js
-packages/server-renderer/server-plugin.js
-packages/server-renderer/client-plugin.js
-packages/template-compiler/build.js
-packages/template-compiler/browser.js
-.vscode
-dist
-temp
-types/v3-generated.d.ts
+
+# Coverage
+coverage/
+*.cover
+.hypothesis/
+*.prof
+.prof/
+
+# PyCharm
+.idea/
+*.idea/
+.idea/*
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# dotenv
+.env.local
+.env.development.local
+.env.test.local
+.en

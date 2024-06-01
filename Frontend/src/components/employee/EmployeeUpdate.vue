@@ -28,7 +28,6 @@
             <option value="Application Received">Application Received</option>
             <option value="Interview Scheduled">Interview Scheduled</option>
             <option value="Hired">Hired</option>
-            <!-- Add more status options if needed -->
           </select>
         </div>
         <div class="form-group">
