@@ -38,6 +38,7 @@ The backend of the Employee Management System is organized into three Django app
 
 4. **Security & Permissions**
     - Role-based access control with three groups (admin, employee, manager)
+    - i made Role-based access control by django admin permission it was applied on data base and details in database
     - Secure authentication and authorization (JWT Tokens)
 
 5. **Views**
