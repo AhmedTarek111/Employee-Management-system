@@ -18,7 +18,7 @@ import CreateCompany from '../components/company/CompanyCreation.vue'
 import CreateDepartment from '../components/department/DepartmentCreation.vue'
 import UserProfile from '../components/User/UserProfile.vue'
 import UserUpdate from '../components/User/UserUpdate.vue'
-
+import HiredEmployee from '../components/employee/EmployeeHired.vue'
 const routes = [
   // company
   {
@@ -93,6 +93,12 @@ const routes = [
     path: '/employee/update/:id/',
     name: 'EmployeeUpdate',
     component: EmployeeUpdate,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/employee/hired/',
+    name: 'HiredEmployee',
+    component: HiredEmployee,
     meta: { requiresAuth: true }
   },
   // home page

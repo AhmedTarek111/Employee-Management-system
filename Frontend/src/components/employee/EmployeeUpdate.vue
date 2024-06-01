@@ -10,7 +10,7 @@
           <label for="company">Company:</label>
           <div v-if="!newUpdatedData.company"></div>
           <select id="company" v-model="newUpdatedData.company" class="form-control">
-            <option value="">Select Company</option>
+            <option>Select Company</option>
             <option v-for="company in companies" :key="company.id" :value="company.id">{{ company.name }}</option>
           </select>
         </div>
@@ -75,19 +75,16 @@
       };
     },
     methods: {
-      // Method to fetch employee details
       getEmployeeDetails() {
         axios.get(`http://127.0.0.1:8000/employee/retrieve-destroy/${this.employeeId}/`)
           .then(response => {
             this.newUpdatedData = response.data;
-            // After fetching employee details, get departments
             this.getDepartments(this.newUpdatedData.company);
           })
           .catch(error => {
             console.error('Error fetching employee details:', error);
           });
       },
-      // Method to fetch list of companies
       listCompany() {
         axios.get('http://127.0.0.1:8000/company/list/')
           .then(response => {
@@ -97,7 +94,6 @@
             console.error('Error fetching companies:', error);
           });
       },
-      // Method to fetch departments based on selected company
       getDepartments(companyId) {
         if (companyId) {
           axios.get(`http://127.0.0.1:8000/department-related/${companyId}/`)
@@ -111,7 +107,6 @@
           this.departments = [];
         }
       },
-      // Method to update employee
       updateEmployee() {
         axios.put(`http://127.0.0.1:8000/employee/update/${this.employeeId}/`, this.newUpdatedData)
           .then(response => {

@@ -26,6 +26,18 @@
       </div>
 
     </div>
+   <div class="container">
+    <div class="row d-flex justify-content-center mt-3">
+      <div class="col-lg-4 col-md-6 col-sm-12 shadow-lg card text-center bg-primary-subtle me-4" style="width: 18rem;" v-if="['Admin', 'Manager'].includes(user.role)">
+        <div class="card-body p-4">
+          <h5 class="card-title">Hired Employee</h5>
+          <router-link to="/employee/hired/" class="btn btn-primary mt-3">Check</router-link>
+        </div>
+      </div>
+      <div></div>
+      <div></div>
+    </div>
+   </div>
   </div>
 </template>
 
