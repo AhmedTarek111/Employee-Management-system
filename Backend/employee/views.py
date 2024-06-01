@@ -34,7 +34,7 @@ class EmployeeRetrieveDestroyAPI(RetrieveDestroyAPIView):
 # to list employees related to spcific company
 class EmployeesRelatedToCompanyAPI(APIView):
     serializer_class = EmployeeListRetrieveDestroySerializer
-    permission_classes=[AllowAny]
+    permission_classes=[IsAuthenticated]
     def get(self,request,companyId):
         company = Company.objects.get(id=companyId)
         employees = Employee.objects.filter(company= company)
@@ -44,7 +44,7 @@ class EmployeesRelatedToCompanyAPI(APIView):
 class EmployeeHiredListAPI(ListAPIView):
     serializer_class = EmployeeListRetrieveDestroySerializer
     queryset = Employee.objects.all()
-    permission_classes=[AllowAny]
+    permission_classes=[IsAuthenticated]
     
     def get_queryset(self):
         return Employee.objects.filter(status='Hired')

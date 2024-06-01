@@ -111,7 +111,7 @@ class UpdateUser(UpdateAPIView):
     
     
 class HomepageView(APIView):
-    permission_classes = [AllowAny] 
+    permission_classes = [IsAuthenticated] 
     def get(self, request, *args, **kwargs):
         employee_count = Employee.objects.all().count()
         company_count = Company.objects.all().count()
