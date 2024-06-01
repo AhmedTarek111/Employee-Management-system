@@ -1,10 +1,6 @@
 # Employee-Management-System
 
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) 
-
 ## Customize configuration
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
