@@ -7,6 +7,9 @@ from django.contrib.auth.models import Group
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from .serializer import UserCreateSerializer, UserUpdateSerializer
 from rest_framework_simplejwt.tokens import AccessToken
+from company.models import Department,Company
+from employee.models import Employee
+from django.http import JsonResponse
 class UserRegisteringApi(CreateAPIView):
     queryset = get_user_model().objects.all()  
     serializer_class = UserCreateSerializer
@@ -105,3 +108,17 @@ class UpdateUser(UpdateAPIView):
         serializer.save()
 
         return Response(serializer.data)
+    
+    
+class HomepageView(APIView):
+    permission_classes = [AllowAny] 
+    def get(self, request, *args, **kwargs):
+        employee_count = Employee.objects.all().count()
+        company_count = Company.objects.all().count()
+        department_count = Department.objects.all().count()
+
+        return Response({
+            'employee': employee_count,
+            'company': company_count,
+            'department': department_count
+        })

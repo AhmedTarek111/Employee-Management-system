@@ -38,6 +38,26 @@
       <div></div>
     </div>
    </div>
+
+   <div class="container mt-5">
+    <h1 class="text-center mb-4">Summry Dashboard</h1>
+    <table class="table table-bordered table-hover table-secondary">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Employees</th>
+          <th scope="col">Companies</th>
+          <th scope="col">Departments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ homepage.employee }}</td>
+          <td>{{ homepage.company }}</td>
+          <td>{{ homepage.department }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   </div>
 </template>
 
@@ -48,7 +68,8 @@ export default {
     name:'HomePage',
     data() {
       return {
-        user:''
+        user:'',
+        homepage:''
       }
     },
     methods: {
@@ -64,9 +85,17 @@ export default {
           console.error('Error fetching user data:', error);
         });
       },
+      Homepage(){
+        axios({
+          url:'http://127.0.0.1:8000/accounts/home/',
+          method:'get'
+        }).then(response => {this.homepage =response.data;
+        })
+      }
     },
     mounted() {
       this.getUser()
+      this.Homepage()
     },
 }
 </script>
