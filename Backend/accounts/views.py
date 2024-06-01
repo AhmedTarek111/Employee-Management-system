@@ -1,10 +1,12 @@
 from rest_framework import  status
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView
+from rest_framework.views import APIView
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated,AllowAny
 from .serializer import UserSerializer
+from rest_framework_simplejwt.tokens import AccessToken
 
 class UserRegisteringApi(CreateAPIView):
     queryset = get_user_model().objects.all()  
@@ -13,7 +15,7 @@ class UserRegisteringApi(CreateAPIView):
 
     def post(self, request, *args, **kwargs):
         serializer = UserSerializer(data=request.data)
-
+    
         if not serializer.is_valid():
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -60,3 +62,26 @@ class UserRegisteringApi(CreateAPIView):
                 return Response({'error': 'Invalid role provided.'}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+class UserRetrieveUpdate(APIView):
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, *args, **kwargs):
+        user = request.user 
+        if user:
+            user_data = UserSerializer(user).data
+            return Response({'user': user_data}, status=status.HTTP_200_OK)
+        else:
+            return Response({'message': 'User not found'}, status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request, *args, **kwargs):
+        user = request.user 
+        if user:
+            serializer = UserSerializer(user, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response({'user': serializer.data}, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'message': 'User not found'}, status=status.HTTP_400_BAD_REQUEST)
+            

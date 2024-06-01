@@ -3,7 +3,6 @@ import axios from 'axios'
 
 export default createStore({
   state: {
-    pew:'ahmed tarek',
     token: localStorage.getItem('token') || '',
     user: null
   },

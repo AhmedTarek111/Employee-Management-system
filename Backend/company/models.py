@@ -16,9 +16,6 @@ class Department(models.Model):
     
     def __str__(self):
         return self.name
-    def save(self, *args, **kwargs) :
-        return super().save(*args, **kwargs)
-
-    
+  
 
     
