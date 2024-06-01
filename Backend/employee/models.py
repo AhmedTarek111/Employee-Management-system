@@ -27,7 +27,10 @@ class Employee(models.Model):
     def save(self, *args, **kwargs):
       if self.department.company != self.company:
           raise ValueError("Please choose a department related to this company")
-      
+        
+      if self.status =='Hired':
+        self.hired_on = datetime.now().date()
+        
       self.mobile_number = self.mobile_number.as_international
       if self.hired_on:
             self.days_employed = (datetime.now().date() - self.hired_on).days

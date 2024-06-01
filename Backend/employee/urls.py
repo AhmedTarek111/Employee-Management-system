@@ -5,7 +5,8 @@ urlpatterns = [
     path('create/',EmployeeCreateAPI.as_view()),
     path('retrieve-destroy/<int:pk>/',EmployeeRetrieveDestroyAPI.as_view()),
     path('update/<int:pk>/',EmployeeUpdateAPI.as_view()),
-    path('related-employee/<int:companyId>/',EmployeesRelatedToCompanyAPI.as_view())
+    path('related-employee/<int:companyId>/',EmployeesRelatedToCompanyAPI.as_view()),
+    path('list/hired/',EmployeeHiredListAPI.as_view()),
 
 ]
 

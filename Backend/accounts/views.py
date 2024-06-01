@@ -7,7 +7,6 @@ from django.contrib.auth.models import Group
 from rest_framework.permissions import IsAuthenticated,AllowAny
 from .serializer import UserCreateSerializer, UserUpdateSerializer
 from rest_framework_simplejwt.tokens import AccessToken
-
 class UserRegisteringApi(CreateAPIView):
     queryset = get_user_model().objects.all()  
     serializer_class = UserCreateSerializer

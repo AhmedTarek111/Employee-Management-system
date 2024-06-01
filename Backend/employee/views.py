@@ -40,3 +40,11 @@ class EmployeesRelatedToCompanyAPI(APIView):
         employees = Employee.objects.filter(company= company)
         data= EmployeeListRetrieveDestroySerializer(employees,many=True).data
         return Response(data,status=status.HTTP_200_OK)
+    
+class EmployeeHiredListAPI(ListAPIView):
+    serializer_class = EmployeeListRetrieveDestroySerializer
+    queryset = Employee.objects.all()
+    permission_classes=[AllowAny]
+    
+    def get_queryset(self):
+        return Employee.objects.filter(status='Hired')
