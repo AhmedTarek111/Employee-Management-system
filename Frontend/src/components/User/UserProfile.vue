@@ -4,20 +4,20 @@
         <div class="col-md-6">
           <div class="d-flex d-flex justify-content-between align-items-center mb-3">
             <h2 class="text-center mb-4">Profile Details</h2>
-            <router-link to="/user/edit/" type="button" class="btn btn-secondary p-2">Edit</router-link>
+            <router-link to="/user/update/" type="button" class="btn btn-secondary p-2">Edit</router-link>
           </div>
           <ul class="list-group" v-if="user">
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <span>Username:</span>
-              <span>{{ user.user.username }}</span>
+              <span>{{ user.username }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <span>Email:</span>
-              <span>{{ user.user.email }}</span>
+              <span>{{ user.email }}</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <span>Role:</span>
-              <span>{{ user.user.role }}</span>
+              <span>{{ user.role }}</span>
             </li>
           </ul>
           <p v-else>Loading user data...</p>
@@ -33,13 +33,13 @@
     name: 'UserProfileUpdate',
     data() {
       return {
-        user: null, // Initialize user as null to avoid errors
+        user: null, 
       };
     },
     methods: {
       getUser() {
         axios({
-          url: 'http://127.0.0.1:8000/accounts/retrive-update/',
+          url: 'http://127.0.0.1:8000/accounts/retrieve/',
           method: 'get',
         })
         .then(response => {

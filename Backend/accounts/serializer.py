@@ -9,4 +9,4 @@ ROLE_CHOICES = (
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields= ('username','email','password','role')
+        fields= ('username','email','password','role','id')

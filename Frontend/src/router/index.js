@@ -17,6 +17,7 @@ import Signup from '../components/auth/Signup .vue'
 import CreateCompany from '../components/company/CompanyCreation.vue'
 import CreateDepartment from '../components/department/DepartmentCreation.vue'
 import UserProfile from '../components/User/UserProfile.vue'
+import UserUpdate from '../components/User/UserUpdate.vue'
 
 const routes = [
   // company
@@ -117,6 +118,11 @@ const routes = [
     path:'/user/profile/',
     name:'UserProfile ',
     component:UserProfile
+  },
+  {
+    path:'/user/update/',
+    name:'UserUpdate ',
+    component:UserUpdate
   },
 ];
 

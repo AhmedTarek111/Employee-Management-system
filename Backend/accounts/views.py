@@ -1,6 +1,6 @@
 from rest_framework import  status
 from rest_framework.response import Response
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView,UpdateAPIView
 from rest_framework.views import APIView
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
@@ -63,7 +63,7 @@ class UserRegisteringApi(CreateAPIView):
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
-class UserRetrieveUpdate(APIView):
+class UserRetrieve(APIView):
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
 
@@ -71,17 +71,12 @@ class UserRetrieveUpdate(APIView):
         user = request.user 
         if user:
             user_data = UserSerializer(user).data
-            return Response({'user': user_data}, status=status.HTTP_200_OK)
+            return Response(user_data, status=status.HTTP_200_OK)
         else:
             return Response({'message': 'User not found'}, status=status.HTTP_400_BAD_REQUEST)
 
-    def put(self, request, *args, **kwargs):
-        user = request.user 
-        if user:
-            serializer = UserSerializer(user, data=request.data, partial=True)
-            if serializer.is_valid():
-                serializer.save()
-                return Response({'user': serializer.data}, status=status.HTTP_200_OK)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        return Response({'message': 'User not found'}, status=status.HTTP_400_BAD_REQUEST)
-            
+
+class UpdateUser(UpdateAPIView):
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
+    queryset = get_user_model().objects.all()
