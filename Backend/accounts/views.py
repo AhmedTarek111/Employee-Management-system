@@ -10,7 +10,8 @@ from rest_framework_simplejwt.tokens import AccessToken
 from company.models import Department,Company
 from employee.models import Employee
 from django.http import JsonResponse
-class UserRegisteringApi(CreateAPIView):
+
+class UserRegisteringApi(APIView):
     queryset = get_user_model().objects.all()  
     serializer_class = UserCreateSerializer
     permission_classes=[AllowAny]
@@ -39,7 +40,6 @@ class UserRegisteringApi(CreateAPIView):
             }
             if role == 'Admin':
                 user = get_user_model().objects.get(username=validated_data['username'])
-                user.group = role
                 user.is_active =True
                 user.is_staff = True
                 user.is_superuser = True
@@ -47,20 +47,15 @@ class UserRegisteringApi(CreateAPIView):
           
             elif role == 'Manager':
                 user = get_user_model().objects.get(username=validated_data['username'])
-                user.group = role
                 user.is_active =True
                 user.is_staff = True
                 user.save()
           
             elif role == 'Employee':
                 user = get_user_model().objects.get(username=validated_data['username'])
-                user.group = role
-
                 user.is_active =True
                 user.save()
                 
-          
-
             if role in group_names:
                 group = Group.objects.get(name=group_names[role])
                 group.user_set.add(user)
@@ -94,6 +89,7 @@ class UpdateUser(UpdateAPIView):
                 'Manager': 'Manager',
                 'Employee': 'Employee'  
             }
+        
         serializer = self.get_serializer(user, data=request.data)
         serializer.is_valid(raise_exception=True)
         if 'role' in request.data:

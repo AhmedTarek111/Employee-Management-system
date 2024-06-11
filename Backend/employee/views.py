@@ -7,6 +7,8 @@ from .serializers import EmployeeListRetrieveDestroySerializer,EmployeeCreateSer
 from .models import Employee 
 from company.models import Company
 from rest_framework.permissions import AllowAny,IsAuthenticated
+from datetime import datetime
+
 
 class EmployeeListAPI(ListAPIView):
     serializer_class = EmployeeListRetrieveDestroySerializer
@@ -24,6 +26,7 @@ class EmployeeUpdateAPI(UpdateAPIView):
     serializer_class = EmployeeUpdateSerializer
     queryset = Employee.objects.all()
     permission_classes=[IsAuthenticated]
+    
     
 class EmployeeRetrieveDestroyAPI(RetrieveDestroyAPIView):
     serializer_class  = EmployeeListRetrieveDestroySerializer

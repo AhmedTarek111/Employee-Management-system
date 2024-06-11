@@ -27,9 +27,9 @@ class Employee(models.Model):
     def save(self, *args, **kwargs):
       if self.department.company != self.company:
           raise ValueError("Please choose a department related to this company")
-        
-      if self.status =='Hired':
-        self.hired_on = datetime.now().date()
+     
+      if self.status == 'Hired' and self.hired_on is None:
+                self.hired_on = datetime.now().date()
         
       self.mobile_number = self.mobile_number.as_international
       if self.hired_on:
